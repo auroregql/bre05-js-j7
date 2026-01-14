@@ -1,17 +1,16 @@
 let user = {
-    firstName : "Harry",
-    lastName : "Bow",
-    motto : "C'est beau la vie !"
+  firstName: "Harry",
+  lastName: "Bow",
+  motto: "C'est beau la vie !"
 };
 
- 
+document.addEventListener("DOMContentLoaded", function () {
+  let data = sessionStorage.getItem("user");
 
-document.addEventListener("DOMContentLoaded", function(){
-
-    sessionStorage.getItem("user");
-    
-    JSON.stringify(user);
-    
-    sessionStorage.setItem("user");
-   
+  if (data === null) {
+    sessionStorage.setItem("user", JSON.stringify(user));
+  } else {
+    user = JSON.parse(data);
+    console.log(user);
+  }
 });
